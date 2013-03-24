@@ -4,17 +4,16 @@
 		var a = alpha || "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
 		return this.each(function(index) {
 			var word = null;
-			switch (typeof words) {
-			case "string":
+			if (typeof words === "string") {
 				word = words;
-				break;
-			case "array":
+			}
+			else if (words instanceof Array) {
 				word = words[Math.floor(Math.random() * words.length)];
-				break;
-			case "function":
+			}
+			else if (words instanceof Function) {
 				word = words(index);
-				break;
-			default:
+			}
+			else {
 				word = this.textContent;
 			}
 			var i = 0,
